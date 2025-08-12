@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <section className="flex flex-col min-h-screen justify-center items-center gap-5">
+    <section className="flex flex-col min-h-screen justify-center items-center gap-5 text-center">
       <svg
         width="48"
         height="48"

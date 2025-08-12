@@ -11,7 +11,9 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en-us" className={libreFranklin.className}>
       <body>
-        {children}
+        <main className="max-w-5xl px-10 mx-auto">
+          {children}
+        </main>
       </body>
     </html>
   );
