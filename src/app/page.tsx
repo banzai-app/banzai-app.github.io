@@ -1,0 +1,32 @@
+import Link from "next/link";
+
+export default function Page() {
+  return (
+    <section className="flex flex-col min-h-screen justify-center items-center gap-5">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 48 48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M48 12C48 18.6274 37.2548 24 24 24C10.7452 24 0 18.6274 0 12C0 5.37258 10.7452 0 24 0C37.2548 0 48 5.37258 48 12Z"
+          fill="#1E1E1E"
+        />
+        <path
+          d="M48 36C48 42.6274 37.2548 48 24 48C10.7452 48 0 42.6274 0 36C0 29.3726 10.7452 24 24 24C37.2548 24 48 29.3726 48 36Z"
+          fill="#1E1E1E"
+        />
+      </svg>
+
+      <h1 className="text-3xl text-bold">
+        Your AI copilot for financial knowledge
+      </h1>
+
+      <p>Coming soon</p>
+
+      <Link href="/about" className="text-blue-light-600">About</Link>
+    </section>
+  );
+}

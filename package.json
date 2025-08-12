@@ -1,0 +1,35 @@
+{
+  "name": "banzai-app.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banzai-app/banzai-app.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/banzai-app/banzai-app.github.io/issues"
+  },
+  "homepage": "https://github.com/banzai-app/banzai-app.github.io#readme",
+  "description": "",
+  "dependencies": {
+    "next": "^15.4.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^24.2.1",
+    "@types/react": "^19.1.10",
+    "typescript": "^5.9.2"
+  }
+}
