@@ -24,9 +24,16 @@ export default function Page() {
         Your AI copilot for financial knowledge
       </h1>
 
+      <img src="/banzai_app.jpg" alt="Banzai App" className="w-1/2" />
+
       <p>Coming soon</p>
 
-      <Link href="/about" className="text-blue-light-600">About</Link>
+      <Link href="/about" className="text-blue-light-600">
+        About
+      </Link>
+      <Link href="https://form.typeform.com/to/L6o7dkN9" className="text-blue-light-600">
+        Join the Waitlist
+      </Link>
     </section>
   );
 }
