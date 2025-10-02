@@ -123,6 +123,41 @@ export function FeaturesSection() {
           </p>
         </div>
 
+        <div className="max-w-5xl mx-auto mb-16">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="relative mx-auto max-w-sm">
+              <img
+                src="/banzai_app2.jpeg"
+                alt="Interface da Banzai mostrando resumo semanal e acompanhamento de metas"
+                className="w-full h-auto rounded-3xl shadow-2xl"
+              />
+            </div>
+            <div>
+              <h3 className="font-[family-name:var(--font-crimson)] text-2xl sm:text-3xl font-semibold mb-4">
+                Acompanhe suas metas em tempo real
+              </h3>
+              <p className="text-base text-muted-foreground leading-relaxed mb-6">
+                Receba resumos semanais personalizados e veja se você está dentro das suas metas. A Banzai te parabeniza
+                quando você está no caminho certo e te ajuda a ajustar quando necessário.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-chart-3 flex-shrink-0 mt-2" />
+                  <span>Resumos semanais e mensais automáticos</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-chart-3 flex-shrink-0 mt-2" />
+                  <span>Comparações inteligentes com períodos anteriores</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-chart-3 flex-shrink-0 mt-2" />
+                  <span>Insights sobre onde você pode economizar</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div key={index} className="bg-card rounded-2xl p-8 border border-border hover:shadow-lg transition-shadow">
