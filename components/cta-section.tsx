@@ -9,8 +9,8 @@ export function CTASection() {
             Chegou a hora de sair da superfície das suas finanças?
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://form.typeform.com/to/L6o7dkN9" className="inline-block">
-              <Button size="lg" className="rounded-full text-base px-8">
+          <a href="https://form.typeform.com/to/L6o7dkN9" className="inline-block" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="rounded-full text-base px-8" gaEvent="conversion_event_signup">
                 Entre na fila de espera
               </Button>
             </a>

@@ -1,8 +1,21 @@
+'use client'
+
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '@/lib/utils'
+
+// Declaração global para o Google Analytics
+declare global {
+  interface Window {
+    gtag?: (
+      command: 'event' | 'config' | 'js',
+      targetId: string,
+      config?: Record<string, any>
+    ) => void;
+  }
+}
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
@@ -40,17 +53,36 @@ function Button({
   variant,
   size,
   asChild = false,
+  gaEvent = null,
+  onClick,
   ...props
 }: React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    gaEvent?: string | null
   }) {
   const Comp = asChild ? Slot : 'button'
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Rastreia evento no Google Analytics se gaEvent foi fornecido
+    if (gaEvent && typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", gaEvent, {
+        event_category: "CTA Waiting List",
+        event_label: gaEvent,
+      });
+    }
+    
+    // Chama o onClick original se existir
+    if (onClick) {
+      onClick(e);
+    }
+  }
 
   return (
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      onClick={handleClick}
       {...props}
     />
   )
