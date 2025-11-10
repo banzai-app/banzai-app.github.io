@@ -1,12 +1,19 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inria_Serif, Roboto } from "next/font/google"
+import { Inria_Serif, Space_Grotesk, Roboto } from "next/font/google"
 import "./globals.css"
 
 const inriaSerif = Inria_Serif({
   weight: ["300", "400", "700"],
   subsets: ["latin"],
   variable: "--font-inria-serif",
+  display: "swap",
+})
+
+const spaceGrotesk = Space_Grotesk({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
   display: "swap",
 })
 
@@ -54,7 +61,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${roboto.variable} ${inriaSerif.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${spaceGrotesk.variable} ${inriaSerif.variable} ${roboto.variable} font-sans antialiased`}>{children}</body>
     </html>
   )
 }

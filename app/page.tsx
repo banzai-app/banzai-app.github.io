@@ -1,24 +1,26 @@
-import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
-import { SolutionSection } from "@/components/solution-section"
+import { DashboardSection } from "@/components/dashboard-section"
+import { ConsultancySection } from "@/components/consultancy-section"
+import { DiveCTASection } from "@/components/dive-cta-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
-import { FeaturesSection } from "@/components/features-section"
-import { PricingSection } from "@/components/pricing-section"
-import { CTASection } from "@/components/cta-section"
+import { InsightsSection } from "@/components/insights-section"
+import { VisualFeaturesSection } from "@/components/visual-features-section"
+import { FinalCTASection } from "@/components/final-cta-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
   
   return (
     <div className="min-h-screen">
-      <Header />
       <main>
         <HeroSection />
-        <SolutionSection />
+        <DashboardSection />
+        <ConsultancySection />
+        <DiveCTASection />
         <HowItWorksSection />
-        <FeaturesSection />
-        <PricingSection />
-        <CTASection />
+        <InsightsSection />
+        <VisualFeaturesSection />
+        <FinalCTASection />
       </main>
       <Footer />
     </div>
