@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export function Footer() {
   return (
     <footer className="relative overflow-hidden" style={{
@@ -12,6 +14,16 @@ export function Footer() {
             alt="Banzai Logo"
             className="w-[48px] h-[48px]"
           />
+        </div>
+        
+        {/* Links */}
+        <div className="flex justify-center mb-6">
+          <Link
+            href="/privacy"
+            className="text-sm text-white/70 hover:text-white transition-colors"
+          >
+            Política de Privacidade
+          </Link>
         </div>
         
         {/* Copyright */}
