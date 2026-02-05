@@ -22,7 +22,7 @@ export function InsightsSection() {
             <p className="text-base lg:text-[18px] text-gray-600 leading-relaxed mb-8 sm:mb-10">
               Defina metas e receba resumos<br/>personalizados sem precisar<br/>fazer nada mais. É só conectar<br/>e começar a receber insights do<br/>seu jeito.
             </p>
-            <a href="https://form.typeform.com/to/L6o7dkN9" className="inline-block" target="_blank" rel="noopener noreferrer">
+            <a href="https://onelink.to/apfcdm" className="inline-block" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="rounded-full text-base px-8 bg-blue-600 hover:bg-blue-700 text-white" gaEvent="conversion_event_signup">
                 COMEÇAR DE GRAÇA
               </Button>

@@ -32,9 +32,9 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3 sm:gap-4">
-            <a href="https://form.typeform.com/to/L6o7dkN9" className="inline-block" target="_blank" rel="noopener noreferrer">
+            <a href="https://onelink.to/apfcdm" className="inline-block" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="rounded-full text-base px-6 sm:px-8 bg-blue-600 hover:bg-blue-700 text-white" gaEvent="conversion_event_signup">
-                Entrar na lista
+                Baixar agora
               </Button>
             </a>
           </div>
