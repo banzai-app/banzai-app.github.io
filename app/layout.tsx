@@ -1,6 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inria_Serif, Space_Grotesk, Roboto } from "next/font/google"
+import { HeaderNav } from "@/components/header-nav"
+import { FooterNav } from "@/components/footer-nav"
+import { SchemaOrg } from "@/components/schema-org"
 import "./globals.css"
 
 const inriaSerif = Inria_Serif({
@@ -24,11 +27,25 @@ const roboto = Roboto({
   display: "swap",
 })
 
+const SITE_URL = "https://banzai.money"
+
 export const metadata: Metadata = {
-  title: "Banzai - Seu Copiloto de IA para Gestão Financeira",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Banzai - Controle seus gastos por semana, sem planilha",
+    template: "%s | Banzai",
+  },
   description:
-    "Aprofunde onde está indo o seu dinheiro. Banzai é uma poderosa ferramenta de IA para te mostrar tudo e gerar insights sobre suas finanças.",
-  generator: "v0.app",
+    "Conecte suas contas via Open Finance. A Banzai organiza suas transações e te dá clareza do que fazer nesta semana.",
+  keywords: ["finanças pessoais", "Open Finance", "meta semanal", "controle de gastos", "Banzai"],
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: "Banzai",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
   icons: {
     icon: [
       { url: "/favicon.png", sizes: "32x32", type: "image/png" },
@@ -48,6 +65,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        <SchemaOrg />
         <link rel="manifest" href="/site.webmanifest" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRT88BC1EZ"></script>
         <script
@@ -61,7 +79,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${spaceGrotesk.variable} ${inriaSerif.variable} ${roboto.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${spaceGrotesk.variable} ${inriaSerif.variable} ${roboto.variable} font-sans antialiased flex flex-col min-h-screen`}>
+        <HeaderNav />
+        <main className="flex-1 flex flex-col">{children}</main>
+        <FooterNav />
+      </body>
     </html>
   )
 }

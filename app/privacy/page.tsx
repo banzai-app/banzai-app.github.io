@@ -1,18 +1,19 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade - Banzai",
+  title: "Política de Privacidade",
   description: "Política de Privacidade do aplicativo Banzai - LGPD e Open Finance",
+  openGraph: {
+    title: "Política de Privacidade | Banzai",
+    description: "Política de Privacidade do aplicativo Banzai - LGPD e Open Finance",
+  },
 }
 
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-1 pt-20 sm:pt-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-4xl">
+      <div className="flex-1 pt-14 sm:pt-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 max-w-4xl">
           <h1 className="text-4xl sm:text-5xl font-heading font-bold text-gray-900 mb-2">
             Política de Privacidade – Banzai
           </h1>
@@ -188,8 +189,7 @@ export default function PrivacyPage() {
             </section>
           </div>
         </div>
-      </main>
-      <Footer />
+      </div>
     </div>
   )
 }

@@ -75,8 +75,8 @@
 }
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
-  --font-sans: var(--font-space-grotesk);
+  /* Tipografia principal: Inria Serif em todo o site */
+  --font-sans: var(--font-inria-serif);
   --font-serif: var(--font-inria-serif);
   --font-button: var(--font-roboto);
   --color-background: var(--background);
@@ -123,8 +123,9 @@
   }
   
   body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-space-grotesk);
+    @apply text-foreground;
+    background-color: #000000;
+    font-family: var(--font-inria-serif);
     line-height: 1.5;
     letter-spacing: 0;
   }
@@ -144,7 +145,7 @@
   }
   
   .font-body {
-    font-family: var(--font-space-grotesk);
+    font-family: var(--font-inria-serif);
     line-height: 1.5;
     letter-spacing: 0;
   }
