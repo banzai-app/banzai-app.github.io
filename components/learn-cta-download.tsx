@@ -2,13 +2,16 @@
 
 import { Button } from "@/components/ui/button"
 import { trackLearnClickDownload } from "@/lib/analytics"
-
-const APP_LINK = "https://onelink.to/apfcdm"
+import { useSearchParams } from "next/navigation"
+import { buildAppLinkWithUtm } from "@/lib/app-link"
 
 export function LearnCtaDownload({ slug }: { slug: string }) {
+  const searchParams = useSearchParams()
+  const appLink = buildAppLinkWithUtm(searchParams)
+
   return (
     <a
-      href={APP_LINK}
+      href={appLink}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackLearnClickDownload(slug)}

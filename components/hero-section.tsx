@@ -1,12 +1,15 @@
 "use client"
 
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { trackCtaClickDownload, trackCtaClickHowItWorks } from "@/lib/analytics"
-
-const APP_LINK = "https://onelink.to/apfcdm"
+import { buildAppLinkWithUtm } from "@/lib/app-link"
 
 export function HeroSection() {
+  const searchParams = useSearchParams()
+  const appLink = buildAppLinkWithUtm(searchParams)
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Imagem de fundo hero */}
@@ -30,7 +33,7 @@ export function HeroSection() {
 
           <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center items-center">
             <a
-              href={APP_LINK}
+              href={appLink}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full xs:w-auto inline-block"

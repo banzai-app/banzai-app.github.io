@@ -2,9 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import { IconMenu2, IconX } from "@tabler/icons-react"
 import { trackNavClick, trackCtaClickDownload } from "@/lib/analytics"
+import { buildAppLinkWithUtm } from "@/lib/app-link"
 
 const NAV_LINKS = [
   { href: "/como-funciona/", label: "Como funciona" },
@@ -12,11 +13,11 @@ const NAV_LINKS = [
   { href: "/faq/", label: "Dúvidas" },
 ] as const
 
-const APP_LINK = "https://onelink.to/apfcdm"
-
 export function HeaderNav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const appLink = buildAppLinkWithUtm(searchParams)
 
   const handleNavClick = (label: string) => {
     trackNavClick(label)
@@ -53,7 +54,7 @@ export function HeaderNav() {
           {/* Mobile: botão Baixar o app + ícone de menu à direita */}
           <div className="flex md:hidden items-center gap-2">
             <a
-              href={APP_LINK}
+              href={appLink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleCtaDownload}
@@ -98,7 +99,7 @@ export function HeaderNav() {
 
           <div className="hidden md:flex items-center gap-2 sm:gap-3">
             <a
-              href={APP_LINK}
+              href={appLink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleCtaDownload}

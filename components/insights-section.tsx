@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button"
+import { useSearchParams } from "next/navigation"
+import { buildAppLinkWithUtm } from "@/lib/app-link"
 
 export function InsightsSection() {
+  const searchParams = useSearchParams()
+  const appLink = buildAppLinkWithUtm(searchParams)
+
   return (
     <section className="py-16 sm:py-24 lg:py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,7 +27,7 @@ export function InsightsSection() {
             <p className="text-base lg:text-[18px] text-gray-600 leading-relaxed mb-8 sm:mb-10">
               Defina metas e receba resumos<br/>personalizados sem precisar<br/>fazer nada mais. É só conectar<br/>e começar a receber insights do<br/>seu jeito.
             </p>
-            <a href="https://onelink.to/apfcdm" className="inline-block" target="_blank" rel="noopener noreferrer">
+            <a href={appLink} className="inline-block" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="rounded-full text-base px-8 bg-blue-600 hover:bg-blue-700 text-white" gaEvent="conversion_event_signup">
                 COMEÇAR DE GRAÇA
               </Button>
@@ -33,4 +38,3 @@ export function InsightsSection() {
     </section>
   )
 }
-

@@ -67,14 +67,14 @@ export default function RootLayout({
       <head>
         <SchemaOrg />
         <link rel="manifest" href="/site.webmanifest" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRT88BC1EZ"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0ETNCSVGG"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-BRT88BC1EZ');
+              gtag('config', 'G-Z0ETNCSVGG');
             `,
           }}
         />

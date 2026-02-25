@@ -2,10 +2,13 @@
 
 import { Button } from "@/components/ui/button"
 import { trackCtaClickDownload } from "@/lib/analytics"
-
-const APP_LINK = "https://onelink.to/apfcdm"
+import { buildAppLinkWithUtm } from "@/lib/app-link"
+import { useSearchParams } from "next/navigation"
 
 export function FinalCTASection() {
+  const searchParams = useSearchParams()
+  const appLink = buildAppLinkWithUtm(searchParams)
+
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-visible" aria-labelledby="final-cta-title">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
@@ -21,7 +24,7 @@ export function FinalCTASection() {
               Comece com uma semana. A clareza vem mais rápido do que você imagina.
             </p>
             <a
-              href={APP_LINK}
+              href={appLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block"

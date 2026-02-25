@@ -3,8 +3,8 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { trackCtaClickDownload, trackCtaClickHowItWorks } from "@/lib/analytics"
-
-const APP_LINK = "https://onelink.to/apfcdm"
+import { useSearchParams } from "next/navigation"
+import { buildAppLinkWithUtm } from "@/lib/app-link"
 
 const STEPS = [
   {
@@ -29,6 +29,9 @@ const STEPS = [
 ] as const
 
 export default function ComoFuncionaPage() {
+  const searchParams = useSearchParams()
+  const appLink = buildAppLinkWithUtm(searchParams)
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -41,7 +44,7 @@ export default function ComoFuncionaPage() {
             Em poucos passos, você transforma transações em clareza semanal.
           </p>
           <a
-            href={APP_LINK}
+            href={appLink}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
@@ -128,7 +131,7 @@ export default function ComoFuncionaPage() {
             Conecte uma conta e veja o seu primeiro resumo.
           </p>
           <a
-            href={APP_LINK}
+            href={appLink}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>

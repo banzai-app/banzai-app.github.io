@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { trackCtaClickDownload } from "@/lib/analytics"
-
-const APP_LINK = "https://onelink.to/apfcdm"
+import { buildAppLinkWithUtm } from "@/lib/app-link"
+import { useSearchParams } from "next/navigation"
 
 const FREE_FEATURES = [
   "Conectar contas via Open Finance",
@@ -14,6 +14,9 @@ const FREE_FEATURES = [
 ] as const
 
 export default function PrecosPage() {
+  const searchParams = useSearchParams()
+  const appLink = buildAppLinkWithUtm(searchParams)
+
   return (
     <div className="min-h-screen">
       <section className="pt-14 sm:pt-16 pb-10 sm:pb-12 bg-gray-50">
@@ -49,7 +52,7 @@ export default function PrecosPage() {
                   ))}
                 </ul>
                 <a
-                  href={APP_LINK}
+                  href={appLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block pt-2"
