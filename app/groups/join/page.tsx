@@ -18,26 +18,45 @@ export default function GroupJoinPage() {
         return;
       }
 
-      // Se chegou aqui via navegador, o sistema já decidiu
-      // que não vai abrir o app via Universal/App Link.
-      // Então, em dispositivos móveis, redirecionamos direto
-      // para a loja correspondente.
+      setCode(rawCode);
+
+      // Se chegou aqui via navegador, o sistema não abriu o app
+      // via Universal/App Link. Tentamos abrir via deep link
+      // banzai:// e, se não funcionar, caímos na loja.
       const ua = window.navigator.userAgent || '';
       const isIOS = /iPhone|iPad|iPod/i.test(ua);
       const isAndroid = /Android/i.test(ua);
 
-      if (isIOS) {
-        window.location.replace('https://apps.apple.com/app/id6749553162');
-        return;
+      const deepLink = `banzai://group/invite?code=${encodeURIComponent(
+        rawCode,
+      )}`;
+
+      // Tenta abrir o app imediatamente
+      window.location.href = deepLink;
+
+      // Se após um pequeno delay a página ainda estiver visível,
+      // assumimos que o app não abriu e redirecionamos para a loja.
+      const timeout = setTimeout(() => {
+        if (document.visibilityState === 'visible') {
+          if (isIOS) {
+            window.location.replace('https://apps.apple.com/app/id6749553162');
+          } else if (isAndroid) {
+            window.location.replace(
+              'https://play.google.com/store/apps/details?id=com.banzai.banzaiapp',
+            );
+          } else {
+            setStatus('ready');
+          }
+        }
+      }, 1500);
+
+      // Em ambientes desktop mostramos a UI normal
+      if (!isIOS && !isAndroid) {
+        setStatus('ready');
       }
 
-      if (isAndroid) {
-        window.location.replace('https://play.google.com/store/apps/details?id=com.banzai.banzaiapp');
-        return;
-      }
+      return () => clearTimeout(timeout);
 
-      setCode(rawCode);
-      setStatus('ready');
     } catch {
       setStatus('error');
     }
@@ -124,4 +143,3 @@ export default function GroupJoinPage() {
     </div>
   );
 }
-
