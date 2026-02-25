@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.banzai.banzaiapp",
+      "sha256_cert_fingerprints": [
+        "AE:DA:A3:D8:04:86:A7:B3:9D:2C:03:6D:F8:69:81:89:AA:DC:5E:76:2F:AB:8B:BF:FB:54:9E:3A:F2:EE:E4:7E"
+      ]
+    }
+  }
+]

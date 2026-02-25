@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "RYMBTP5GQN.com.banzai.banzaiapp",
+        "paths": [
+          "/groups/join*"
+        ]
+      }
+    ]
+  }
+}
