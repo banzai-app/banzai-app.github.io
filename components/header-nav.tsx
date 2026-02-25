@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { IconMenu2, IconX } from "@tabler/icons-react"
 import { trackNavClick, trackCtaClickDownload } from "@/lib/analytics"
-import { buildAppLinkWithUtm } from "@/lib/app-link"
+import { useAppLink } from "@/hooks/use-app-link"
 
 const NAV_LINKS = [
   { href: "/como-funciona/", label: "Como funciona" },
@@ -16,8 +16,7 @@ const NAV_LINKS = [
 export function HeaderNav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const appLink = buildAppLinkWithUtm(searchParams)
+  const appLink = useAppLink()
 
   const handleNavClick = (label: string) => {
     trackNavClick(label)

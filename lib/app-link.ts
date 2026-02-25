@@ -1,7 +1,7 @@
-const APP_LINK_BASE = "https://onelink.to/apfcdm"
+export const APP_LINK_BASE = "https://onelink.to/apfcdm"
 
-export function buildAppLinkWithUtm(searchParams: any) {
-  if (!searchParams || typeof searchParams.get !== "function") {
+export function buildAppLinkWithUtm(searchParams: URLSearchParams | null | undefined) {
+  if (!searchParams) {
     return APP_LINK_BASE
   }
 

@@ -2,12 +2,10 @@
 
 import { Button } from "@/components/ui/button"
 import { trackLearnClickDownload } from "@/lib/analytics"
-import { useSearchParams } from "next/navigation"
-import { buildAppLinkWithUtm } from "@/lib/app-link"
+import { useAppLink } from "@/hooks/use-app-link"
 
 export function LearnCtaDownload({ slug }: { slug: string }) {
-  const searchParams = useSearchParams()
-  const appLink = buildAppLinkWithUtm(searchParams)
+  const appLink = useAppLink()
 
   return (
     <a

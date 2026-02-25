@@ -1,14 +1,12 @@
 "use client"
 
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { trackCtaClickDownload, trackCtaClickHowItWorks } from "@/lib/analytics"
-import { buildAppLinkWithUtm } from "@/lib/app-link"
+import { useAppLink } from "@/hooks/use-app-link"
 
 export function HeroSection() {
-  const searchParams = useSearchParams()
-  const appLink = buildAppLinkWithUtm(searchParams)
+  const appLink = useAppLink()
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

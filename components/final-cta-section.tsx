@@ -2,12 +2,10 @@
 
 import { Button } from "@/components/ui/button"
 import { trackCtaClickDownload } from "@/lib/analytics"
-import { buildAppLinkWithUtm } from "@/lib/app-link"
-import { useSearchParams } from "next/navigation"
+import { useAppLink } from "@/hooks/use-app-link"
 
 export function FinalCTASection() {
-  const searchParams = useSearchParams()
-  const appLink = buildAppLinkWithUtm(searchParams)
+  const appLink = useAppLink()
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-visible" aria-labelledby="final-cta-title">

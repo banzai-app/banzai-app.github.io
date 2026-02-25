@@ -3,8 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { trackCtaClickDownload, trackCtaClickHowItWorks } from "@/lib/analytics"
-import { useSearchParams } from "next/navigation"
-import { buildAppLinkWithUtm } from "@/lib/app-link"
+import { useAppLink } from "@/hooks/use-app-link"
 
 const STEPS = [
   {
@@ -29,8 +28,7 @@ const STEPS = [
 ] as const
 
 export default function ComoFuncionaPage() {
-  const searchParams = useSearchParams()
-  const appLink = buildAppLinkWithUtm(searchParams)
+  const appLink = useAppLink()
 
   return (
     <div className="min-h-screen">

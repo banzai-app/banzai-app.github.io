@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button"
-import { useSearchParams } from "next/navigation"
-import { buildAppLinkWithUtm } from "@/lib/app-link"
+import { useAppLink } from "@/hooks/use-app-link"
 
 export function InsightsSection() {
-  const searchParams = useSearchParams()
-  const appLink = buildAppLinkWithUtm(searchParams)
+  const appLink = useAppLink()
 
   return (
     <section className="py-16 sm:py-24 lg:py-16 bg-white">

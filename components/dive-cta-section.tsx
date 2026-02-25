@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button"
-import { buildAppLinkWithUtm } from "@/lib/app-link"
-import { useSearchParams } from "next/navigation"
+import { useAppLink } from "@/hooks/use-app-link"
 
 export function DiveCTASection() {
-  const searchParams = useSearchParams()
-  const appLink = buildAppLinkWithUtm(searchParams)
+  const appLink = useAppLink()
 
   return (
     <section className="relative py-20 sm:py-32 lg:py-32 overflow-hidden">

@@ -3,8 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { trackCtaClickDownload } from "@/lib/analytics"
-import { buildAppLinkWithUtm } from "@/lib/app-link"
-import { useSearchParams } from "next/navigation"
+import { useAppLink } from "@/hooks/use-app-link"
 
 const FREE_FEATURES = [
   "Conectar contas via Open Finance",
@@ -14,8 +13,7 @@ const FREE_FEATURES = [
 ] as const
 
 export default function PrecosPage() {
-  const searchParams = useSearchParams()
-  const appLink = buildAppLinkWithUtm(searchParams)
+  const appLink = useAppLink()
 
   return (
     <div className="min-h-screen">
