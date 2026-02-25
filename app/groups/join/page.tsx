@@ -6,14 +6,14 @@ type Status = 'loading' | 'ready' | 'error';
 
 export default function GroupJoinPage() {
   const [status, setStatus] = useState<Status>('loading');
-  const [groupId, setGroupId] = useState<string | null>(null);
+  const [code, setCode] = useState<string | null>(null);
 
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
-      const id = params.get('groupId');
+      const rawCode = params.get('code') ?? params.get('groupId');
 
-      if (!id) {
+      if (!rawCode) {
         setStatus('error');
         return;
       }
@@ -36,7 +36,7 @@ export default function GroupJoinPage() {
         return;
       }
 
-      setGroupId(id);
+      setCode(rawCode);
       setStatus('ready');
     } catch {
       setStatus('error');
@@ -44,9 +44,9 @@ export default function GroupJoinPage() {
   }, []);
 
   const handleOpenApp = () => {
-    if (!groupId) return;
+    if (!code) return;
 
-    const deepLink = `banzai://groups/join?groupId=${encodeURIComponent(groupId)}`;
+    const deepLink = `banzai://group/invite?code=${encodeURIComponent(code)}`;
     window.location.href = deepLink;
   };
 
