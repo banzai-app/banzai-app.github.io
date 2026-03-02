@@ -12,11 +12,19 @@ const getApiBaseUrl = () => {
   return "https://sk9wfett8v.us-east-1.awsapprunner.com/api"
 }
 
+const getWhatsAppBaseUrl = (apiBaseUrl: string) => {
+  return apiBaseUrl.replace(/\/api\/?$/, "")
+}
+
 function WhatsAppOnboardingContent() {
   const params = useSearchParams()
   const sessionToken = params.get("sessionToken")
 
   const apiBaseUrl = useMemo(() => getApiBaseUrl(), [])
+  const whatsappBaseUrl = useMemo(
+    () => getWhatsAppBaseUrl(apiBaseUrl),
+    [apiBaseUrl],
+  )
 
   const [name, setName] = useState("")
   const [nickname, setNickname] = useState("")
@@ -48,7 +56,7 @@ function WhatsAppOnboardingContent() {
 
       redirectURL.searchParams.set("sessionToken", sessionToken)
 
-      const response = await fetch(`${apiBaseUrl}/whatsapp/iniciador/token`, {
+      const response = await fetch(`${whatsappBaseUrl}/whatsapp/iniciador/token`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +81,7 @@ function WhatsAppOnboardingContent() {
 
       const data = await response.json()
 
-      localStorage.setItem("banzai_whatsapp_api_base", apiBaseUrl)
+      localStorage.setItem("banzai_whatsapp_api_base", whatsappBaseUrl)
       localStorage.setItem("banzai_whatsapp_session", sessionToken)
       localStorage.setItem("banzai_iniciador_attempt", data.externalId)
       localStorage.setItem("banzai_iniciador_link", data.iniciadorId)
