@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { Suspense, useMemo, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 
@@ -12,7 +12,7 @@ const getApiBaseUrl = () => {
   return "https://sk9wfett8v.us-east-1.awsapprunner.com/api"
 }
 
-export default function WhatsAppOnboardingPage() {
+function WhatsAppOnboardingContent() {
   const params = useSearchParams()
   const sessionToken = params.get("sessionToken")
 
@@ -165,5 +165,13 @@ export default function WhatsAppOnboardingPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function WhatsAppOnboardingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <WhatsAppOnboardingContent />
+    </Suspense>
   )
 }
