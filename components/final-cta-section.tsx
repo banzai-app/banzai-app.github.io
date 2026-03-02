@@ -3,9 +3,12 @@
 import { Button } from "@/components/ui/button"
 import { trackCtaClickDownload } from "@/lib/analytics"
 import { useAppLink } from "@/hooks/use-app-link"
+import { useWhatsAppLink } from "@/hooks/use-whatsapp-link"
 
 export function FinalCTASection() {
   const appLink = useAppLink()
+  const whatsappLink = useWhatsAppLink("Quero começar meu onboarding na Banzai.")
+  const showWhatsApp = false
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-visible" aria-labelledby="final-cta-title">
@@ -21,22 +24,42 @@ export function FinalCTASection() {
             <p className="text-gray-600 text-base sm:text-lg mb-8">
               Comece com uma semana. A clareza vem mais rápido do que você imagina.
             </p>
-            <a
-              href={appLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block"
-              onClick={() =>
-                trackCtaClickDownload({ page: "home", placement: "final_cta" })
-              }
-            >
-              <Button
-                size="lg"
-                className="rounded-full text-base px-8 bg-blue-600 hover:bg-blue-700 text-white font-medium"
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              {showWhatsApp && whatsappLink && (
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block"
+                  onClick={() =>
+                    trackCtaClickDownload({ page: "home", placement: "final_cta_whatsapp" })
+                  }
+                >
+                  <Button
+                    size="lg"
+                    className="rounded-full text-base px-8 bg-green-600 hover:bg-green-700 text-white font-medium"
+                  >
+                    Falar no WhatsApp
+                  </Button>
+                </a>
+              )}
+              <a
+                href={appLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+                onClick={() =>
+                  trackCtaClickDownload({ page: "home", placement: "final_cta" })
+                }
               >
-                Baixar o app
-              </Button>
-            </a>
+                <Button
+                  size="lg"
+                  className="rounded-full text-base px-8 bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                >
+                  Baixar o app
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </div>

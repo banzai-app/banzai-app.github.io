@@ -4,9 +4,12 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { trackCtaClickDownload, trackCtaClickHowItWorks } from "@/lib/analytics"
 import { useAppLink } from "@/hooks/use-app-link"
+import { useWhatsAppLink } from "@/hooks/use-whatsapp-link"
 
 export function HeroSection() {
   const appLink = useAppLink()
+  const whatsappLink = useWhatsAppLink("Quero começar meu onboarding na Banzai.")
+  const showWhatsApp = false
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -30,6 +33,24 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center items-center">
+            {showWhatsApp && whatsappLink && (
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full xs:w-auto inline-block"
+                onClick={() =>
+                  trackCtaClickDownload({ page: "home", placement: "hero_whatsapp" })
+                }
+              >
+                <Button
+                  size="lg"
+                  className="w-full xs:w-auto rounded-full text-base px-6 sm:px-8 bg-green-600 hover:bg-green-700 text-white font-medium"
+                >
+                  Começar no WhatsApp
+                </Button>
+              </a>
+            )}
             <a
               href={appLink}
               target="_blank"
