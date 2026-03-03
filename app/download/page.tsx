@@ -1,13 +1,13 @@
 "use client"
 
 import { useEffect } from "react"
-import { trackCtaClickDownload } from "@/lib/analytics"
+import { trackCtaClickDownloadAppRedirect } from "@/lib/analytics"
 
 const DOWNLOAD_URL = "https://onelink.to/apfcdm"
 
 export default function DownloadRedirectPage() {
   useEffect(() => {
-    trackCtaClickDownload({ page: "download", placement: "redirect" })
+    trackCtaClickDownloadAppRedirect({ page: "download", placement: "redirect" })
 
     const timeout = setTimeout(() => {
       window.location.href = DOWNLOAD_URL

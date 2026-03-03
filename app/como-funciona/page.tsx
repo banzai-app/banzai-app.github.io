@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { trackCtaClickDownload, trackCtaClickHowItWorks } from "@/lib/analytics"
+import { trackCtaClickDownloadApp, trackCtaClickHowItWorks } from "@/lib/analytics"
 import { useAppLink } from "@/hooks/use-app-link"
 
 const STEPS = [
@@ -46,7 +46,7 @@ export default function ComoFuncionaPage() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              trackCtaClickDownload({
+              trackCtaClickDownloadApp({
                 page: "como-funciona",
                 placement: "hero",
               })
@@ -133,7 +133,7 @@ export default function ComoFuncionaPage() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              trackCtaClickDownload({
+              trackCtaClickDownloadApp({
                 page: "como-funciona",
                 placement: "final_cta",
               })

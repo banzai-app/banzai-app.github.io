@@ -1,14 +1,16 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { trackCtaClickDownload } from "@/lib/analytics"
+import {
+  trackCtaClickDownloadApp,
+  trackCtaClickDownloadWhatsApp,
+} from "@/lib/analytics"
 import { useAppLink } from "@/hooks/use-app-link"
-import { useWhatsAppLink } from "@/hooks/use-whatsapp-link"
 
 export function FinalCTASection() {
   const appLink = useAppLink()
-  const whatsappLink = useWhatsAppLink("Quero começar meu onboarding na Banzai.")
-  const showWhatsApp = false
+  const whatsappLink = "https://wa.me/message/STNGOA3DNQWJI1"
+  const showWhatsApp = true
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-visible" aria-labelledby="final-cta-title">
@@ -32,7 +34,10 @@ export function FinalCTASection() {
                   rel="noopener noreferrer"
                   className="inline-block"
                   onClick={() =>
-                    trackCtaClickDownload({ page: "home", placement: "final_cta_whatsapp" })
+                    trackCtaClickDownloadWhatsApp({
+                      page: "home",
+                      placement: "final_cta_whatsapp",
+                    })
                   }
                 >
                   <Button
@@ -49,7 +54,10 @@ export function FinalCTASection() {
                 rel="noopener noreferrer"
                 className="inline-block"
                 onClick={() =>
-                  trackCtaClickDownload({ page: "home", placement: "final_cta" })
+                  trackCtaClickDownloadApp({
+                    page: "home",
+                    placement: "final_cta",
+                  })
                 }
               >
                 <Button

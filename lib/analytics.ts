@@ -40,6 +40,51 @@ export function trackCtaClickDownload(params: {
   }
 }
 
+export function trackCtaClickDownloadApp(params: {
+  page: string
+  placement: string
+}) {
+  trackCtaClickDownload(params)
+
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "cta_click_download_app", {
+      page: params.page,
+      placement: params.placement,
+      device: getDevice(),
+    })
+  }
+}
+
+export function trackCtaClickDownloadAppRedirect(params: {
+  page: string
+  placement: string
+}) {
+  trackCtaClickDownload(params)
+
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "cta_click_download_app_redirect", {
+      page: params.page,
+      placement: params.placement,
+      device: getDevice(),
+    })
+  }
+}
+
+export function trackCtaClickDownloadWhatsApp(params: {
+  page: string
+  placement: string
+}) {
+  trackCtaClickDownload(params)
+
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "cta_click_download_whatsapp", {
+      page: params.page,
+      placement: params.placement,
+      device: getDevice(),
+    })
+  }
+}
+
 export function trackCtaClickHowItWorks(params: {
   page: string
   placement: string

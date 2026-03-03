@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { IconMenu2, IconX } from "@tabler/icons-react"
-import { trackNavClick, trackCtaClickDownload } from "@/lib/analytics"
+import { trackNavClick, trackCtaClickDownloadApp } from "@/lib/analytics"
 import { useAppLink } from "@/hooks/use-app-link"
 
 const NAV_LINKS = [
@@ -23,7 +23,7 @@ export function HeaderNav() {
   }
 
   const handleCtaDownload = () => {
-    trackCtaClickDownload({ page: pathname || "/", placement: "header" })
+    trackCtaClickDownloadApp({ page: pathname || "/", placement: "header" })
   }
 
   const linkClass = (href: string) =>

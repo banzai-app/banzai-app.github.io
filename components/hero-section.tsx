@@ -2,14 +2,17 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { trackCtaClickDownload, trackCtaClickHowItWorks } from "@/lib/analytics"
+import {
+  trackCtaClickDownloadApp,
+  trackCtaClickDownloadWhatsApp,
+  trackCtaClickHowItWorks,
+} from "@/lib/analytics"
 import { useAppLink } from "@/hooks/use-app-link"
-import { useWhatsAppLink } from "@/hooks/use-whatsapp-link"
 
 export function HeroSection() {
   const appLink = useAppLink()
-  const whatsappLink = useWhatsAppLink("Quero começar meu onboarding na Banzai.")
-  const showWhatsApp = false
+  const whatsappLink = "https://wa.me/message/STNGOA3DNQWJI1"
+  const showWhatsApp = true
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -40,7 +43,10 @@ export function HeroSection() {
                 rel="noopener noreferrer"
                 className="w-full xs:w-auto inline-block"
                 onClick={() =>
-                  trackCtaClickDownload({ page: "home", placement: "hero_whatsapp" })
+                  trackCtaClickDownloadWhatsApp({
+                    page: "home",
+                    placement: "hero_whatsapp",
+                  })
                 }
               >
                 <Button
@@ -57,7 +63,10 @@ export function HeroSection() {
               rel="noopener noreferrer"
               className="w-full xs:w-auto inline-block"
               onClick={() =>
-                trackCtaClickDownload({ page: "home", placement: "hero_primary" })
+                trackCtaClickDownloadApp({
+                  page: "home",
+                  placement: "hero_primary",
+                })
               }
             >
               <Button

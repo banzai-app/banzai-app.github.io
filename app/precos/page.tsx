@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { trackCtaClickDownload } from "@/lib/analytics"
+import { trackCtaClickDownloadApp } from "@/lib/analytics"
 import { useAppLink } from "@/hooks/use-app-link"
 
 const FREE_FEATURES = [
@@ -55,7 +55,7 @@ export default function PrecosPage() {
                   rel="noopener noreferrer"
                   className="block pt-2"
                   onClick={() =>
-                    trackCtaClickDownload({
+                    trackCtaClickDownloadApp({
                       page: "precos",
                       placement: "free_cta",
                     })
