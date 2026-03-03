@@ -42,9 +42,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "Banzai",
+    images: [
+      {
+        url: "/banzai_logo.png",
+        width: 1200,
+        height: 1200,
+        alt: "Banzai",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/banzai_logo.png"],
   },
   icons: {
     icon: [
