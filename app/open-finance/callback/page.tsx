@@ -18,8 +18,16 @@ const getApiBaseUrl = () => {
   return "https://sk9wfett8v.us-east-1.awsapprunner.com/api"
 }
 
+const getWhatsAppBaseUrl = (apiBaseUrl: string) => {
+  return apiBaseUrl.replace(/\/api\/?$/, "")
+}
+
 export default function OpenFinanceCallbackPage() {
   const apiBaseUrl = useMemo(() => getApiBaseUrl(), [])
+  const whatsappBaseUrl = useMemo(
+    () => getWhatsAppBaseUrl(apiBaseUrl),
+    [apiBaseUrl],
+  )
   const whatsappLink = useMemo(
     () => buildWhatsAppLink("Acabei de conectar minhas contas!"),
     [],
@@ -67,7 +75,7 @@ export default function OpenFinanceCallbackPage() {
 
     const run = async () => {
       try {
-        const response = await fetch(`${apiBaseUrl}/whatsapp/iniciador/link`, {
+        const response = await fetch(`${whatsappBaseUrl}/whatsapp/iniciador/link`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
