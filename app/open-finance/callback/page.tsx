@@ -28,10 +28,7 @@ export default function OpenFinanceCallbackPage() {
     () => getWhatsAppBaseUrl(apiBaseUrl),
     [apiBaseUrl],
   )
-  const whatsappLink = useMemo(
-    () => buildWhatsAppLink("Acabei de conectar minhas contas!"),
-    [],
-  )
+  const whatsappLink = useMemo(() => buildWhatsAppLink(), [])
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading")
   const [message, setMessage] = useState("")
   const hasRequested = useRef(false)
