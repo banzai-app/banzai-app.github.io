@@ -95,6 +95,15 @@ export default function OpenFinanceCallbackPage() {
             return
           }
           const payload = await response.json().catch(() => ({}))
+          if (
+            response.status === 401 &&
+            payload?.error === "Invalid state"
+          ) {
+            setStatus("success")
+            setMessage("Conexão concluída! Já estamos analisando seus dados.")
+            sessionStorage.setItem(completionKey, "true")
+            return
+          }
           throw new Error(payload.error ?? "Erro ao confirmar conexão")
         }
 
