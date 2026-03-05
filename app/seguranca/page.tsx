@@ -47,10 +47,10 @@ export default function SegurancaPage() {
             O que a Banzai acessa
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            A Banzai acessa apenas as transações e descrições necessárias para organizar
-            seus gastos.<br />
-            Usa essas informações para mostrar categorias, resumos e indicadores que
-            ajudam na sua clareza financeira.<br />
+            A Banzai acessa apenas as transações e descrições necessárias para analisar
+            transações e identificar recorrências, custos e sinais de atenção.<br />
+            Usa essas informações para gerar sinais com contexto claro do que está
+            acontecendo no seu dinheiro.<br />
             Sempre trabalhamos com o mínimo de dados necessário para o funcionamento do
             app.
           </p>

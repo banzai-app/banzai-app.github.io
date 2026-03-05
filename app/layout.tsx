@@ -32,12 +32,12 @@ const SITE_URL = "https://banzai.money"
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Banzai - Controle seus gastos por semana, sem planilha",
+    default: "Banzai - Seu dinheiro, explicado",
     template: "%s | Banzai",
   },
   description:
-    "Conecte suas contas via Open Finance. A Banzai organiza suas transações e te dá clareza do que fazer nesta semana.",
-  keywords: ["finanças pessoais", "Open Finance", "meta semanal", "controle de gastos", "Banzai"],
+    "Conecte via Open Finance e entenda o que está acontecendo com seu dinheiro. A Banzai fornece evidências claras de cobranças recorrentes, custos e sinais de atenção.",
+  keywords: ["finanças pessoais", "Open Finance", "análise financeira", "recorrências", "Banzai"],
   openGraph: {
     type: "website",
     locale: "pt_BR",

@@ -1,21 +1,21 @@
 const STEPS = [
   {
     icon: "/feature_1.svg",
-    title: "Conecte suas contas",
+    title: "Conecte com Open Finance",
     description:
-      "Conecte banco e cartão via Open Finance para importar suas transações com segurança.",
+      "Você concede consentimento diretamente no seu banco. O acesso pode ser revogado quando quiser.",
   },
   {
     icon: "/feature_2.svg",
-    title: "A Banzai organiza tudo",
+    title: "Análise automática",
     description:
-      "Limpamos e classificamos seus gastos automaticamente para virar informação útil.",
+      "A Banzai analisa transações dos últimos meses para identificar recorrências, custos e padrões.",
   },
   {
     icon: "/feature_3.svg",
-    title: "Controle por semana",
+    title: "O que importa, com contexto",
     description:
-      "Sua meta mensal vira um teto semanal. Você acompanha o ritmo e ajusta antes de estourar.",
+      "Você recebe sinais de atenção com explicações objetivas do porquê cada item apareceu.",
   },
 ] as const
 
@@ -27,7 +27,7 @@ export function StepsSection() {
           id="metodo-title"
           className="font-heading text-2xl sm:text-3xl font-semibold text-gray-900 text-center mb-10 sm:mb-12"
         >
-          Um método simples para o que é difícil
+          Como funciona
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 max-w-4xl mx-auto">

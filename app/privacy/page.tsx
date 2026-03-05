@@ -174,6 +174,7 @@ export default function PrivacyPage() {
               </p>
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <p className="text-gray-900 font-semibold mb-2">Banzai</p>
+                <p className="text-gray-700">Banzai Serviços de Tecnologia LTDA.</p>
                 <p className="text-gray-700">CNPJ: 62.336.401/0001-74</p>
                 <p className="text-gray-700">
                   E-mail:{" "}

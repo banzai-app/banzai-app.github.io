@@ -16,7 +16,7 @@ export function AppPreviewSection() {
           </div>
           <div className="flex justify-center lg:justify-end order-1 lg:order-2 overflow-visible min-w-0">
             <img
-              src="/product_2.png"
+              src="/product_2_new.png"
               alt="Tela do app Banzai com gastos organizados"
               className="w-full h-auto lg:w-[560px] lg:max-w-none"
               loading="lazy"

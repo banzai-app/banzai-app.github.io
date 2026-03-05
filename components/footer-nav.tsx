@@ -79,6 +79,9 @@ export function FooterNav() {
         {/* Contato */}
         <div className="mt-8 pt-8 border-t border-white/15 space-y-1">
           <p className="text-sm text-white/70">
+            Banzai Serviços de Tecnologia LTDA.
+          </p>
+          <p className="text-sm text-white/70">
             CNPJ: 62.336.401/0001-74
           </p>
           <p className="text-sm text-white/70">

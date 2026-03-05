@@ -2,24 +2,24 @@ import { Card, CardContent } from "@/components/ui/card"
 
 const BENEFITS = [
   {
-    title: "Meta semanal que funciona",
+    title: "Recorrências",
     description:
-      "Você não precisa esperar o fim do mês para descobrir que deu errado.",
+      "Cobranças repetidas e assinaturas detectadas automaticamente",
   },
   {
-    title: "Categorias claras, sem esforço",
+    title: "Custos",
     description:
-      "Veja para onde seu dinheiro foi de verdade, com transações organizadas.",
+      "Tarifas, juros e cobranças identificáveis no seu histórico",
   },
   {
-    title: "Resumo rápido da semana",
+    title: "Mudanças de padrão",
     description:
-      "Entenda os principais gastos e o que puxou seu orçamento.",
+      "Variações relevantes no seu comportamento financeiro",
   },
   {
-    title: "Conversa com contexto quando precisar",
+    title: "Sinais de atenção",
     description:
-      "Pergunte sobre gastos, categorias e semanas, com o histórico já organizado.",
+      "Pontos que merecem uma segunda olhada com explicação clara",
   },
 ] as const
 
@@ -31,7 +31,7 @@ export function BenefitCards() {
           id="benefits-title"
           className="font-heading text-2xl sm:text-3xl font-semibold text-gray-900 text-center mb-8 sm:mb-12"
         >
-          Menos confusão. Mais controle.
+          O que a Banzai encontra
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">

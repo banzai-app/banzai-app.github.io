@@ -1,7 +1,7 @@
 const METRICS = [
-  { value: "10k+", label: "transações processadas" },
+  { value: "100k", label: "transações analisadas" },
   { value: "1k+", label: "usuários em beta" },
-  { value: "95%", label: "de classificação automática em cartão" },
+  { value: "95%", label: "de classificação automática em cartão e conta corrente" },
 ] as const
 
 export function MetricsStrip() {

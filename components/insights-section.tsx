@@ -11,7 +11,7 @@ export function InsightsSection() {
           {/* Product Image - Left */}
           <div className="flex-shrink-0">
             <img 
-              src="/product_2.png" 
+              src="/product_2_new.png"
               alt="Banzai App Insights"
               className="w-[224px] lg:w-[560px] h-auto"
             />

@@ -1,14 +1,9 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import {
-  trackCtaClickDownloadApp,
-  trackCtaClickDownloadWhatsApp,
-} from "@/lib/analytics"
-import { useAppLink } from "@/hooks/use-app-link"
+import { trackCtaClickDownloadWhatsApp } from "@/lib/analytics"
 
 export function FinalCTASection() {
-  const appLink = useAppLink()
   const whatsappLink = "https://wa.me/message/STNGOA3DNQWJI1"
   const showWhatsApp = true
 
@@ -21,10 +16,11 @@ export function FinalCTASection() {
               id="final-cta-title"
               className="font-heading text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight"
             >
-              Pronto para sair da superfície das suas finanças?
+              Comece agora
             </h2>
             <p className="text-gray-600 text-base sm:text-lg mb-8">
-              Comece com uma semana. A clareza vem mais rápido do que você imagina.
+              Comece pelo WhatsApp e veja seu dinheiro com clareza usando dados das suas
+              transações.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               {showWhatsApp && whatsappLink && (
@@ -44,29 +40,10 @@ export function FinalCTASection() {
                     size="lg"
                     className="rounded-full text-base px-8 bg-green-600 hover:bg-green-700 text-white font-medium"
                   >
-                    Falar no WhatsApp
+                    Começar pelo WhatsApp
                   </Button>
                 </a>
               )}
-              <a
-                href={appLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block"
-                onClick={() =>
-                  trackCtaClickDownloadApp({
-                    page: "home",
-                    placement: "final_cta",
-                  })
-                }
-              >
-                <Button
-                  size="lg"
-                  className="rounded-full text-base px-8 bg-blue-600 hover:bg-blue-700 text-white font-medium"
-                >
-                  Baixar o app
-                </Button>
-              </a>
             </div>
           </div>
         </div>

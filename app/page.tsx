@@ -3,19 +3,20 @@ import { StepsSection } from "@/components/steps-section"
 import { AppPreviewSection } from "@/components/app-preview-section"
 import { BenefitCards } from "@/components/benefit-cards"
 import { HighlightsSection } from "@/components/highlights-section"
+import { SecuritySection } from "@/components/security-section"
 import { MetricsStrip } from "@/components/metrics-strip"
 import { FaqPreview } from "@/components/faq-preview"
 import { FinalCTASection } from "@/components/final-cta-section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Banzai - Controle seus gastos por semana, sem planilha",
+  title: "Banzai - Seu dinheiro, explicado",
   description:
-    "Conecte suas contas via Open Finance. A Banzai organiza suas transações e te dá clareza do que fazer nesta semana.",
+    "Conecte via Open Finance e entenda o que está acontecendo com seu dinheiro. A Banzai fornece evidências claras de cobranças recorrentes, custos e sinais de atenção.",
   openGraph: {
-    title: "Banzai - Controle seus gastos por semana, sem planilha",
+    title: "Banzai - Seu dinheiro, explicado",
     description:
-      "Conecte suas contas via Open Finance. A Banzai organiza suas transações e te dá clareza do que fazer nesta semana.",
+      "Conecte via Open Finance e entenda o que está acontecendo com seu dinheiro. A Banzai fornece evidências claras de cobranças recorrentes, custos e sinais de atenção.",
   },
 }
 
@@ -27,6 +28,7 @@ export default function Home() {
       <AppPreviewSection />
       <BenefitCards />
       <HighlightsSection />
+      <SecuritySection />
       <MetricsStrip />
       <FaqPreview />
       <FinalCTASection />
