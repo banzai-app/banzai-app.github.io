@@ -125,6 +125,11 @@ export function trackWhatsAppConversationStarted(source: string) {
   sendEvent("whatsapp_conversation_started", { source })
 }
 
+export function trackWhatsAppConnectionPageViewed(source: string) {
+  setFunnelEntryPath("whatsapp_first")
+  sendEvent("whatsapp_connection_page_viewed", { source })
+}
+
 export function trackWebFormSubmitted(status: "success" | "error") {
   setFunnelEntryPath("whatsapp_first")
   sendEvent("web_form_submitted", { status })

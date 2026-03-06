@@ -4,8 +4,8 @@ import { Suspense, useEffect, useMemo, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
+  trackWhatsAppConnectionPageViewed,
   trackWebFormSubmitted,
-  trackWhatsAppConversationStarted,
 } from "@/lib/analytics"
 import { getOrCreateLeadId } from "@/lib/funnel-context"
 
@@ -40,7 +40,7 @@ function WhatsAppOnboardingContent() {
 
   useEffect(() => {
     if (sessionToken) {
-      trackWhatsAppConversationStarted("landing_whatsapp")
+      trackWhatsAppConnectionPageViewed("whatsapp_link")
     }
   }, [sessionToken])
 
