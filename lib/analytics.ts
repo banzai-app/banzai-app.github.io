@@ -2,6 +2,13 @@
  * Analytics events conforme PRD – uso apenas no client (window.gtag).
  */
 
+import {
+  getAcquisitionParams,
+  getFunnelEntryPath,
+  getOrCreateLeadId,
+  setFunnelEntryPath,
+} from "@/lib/funnel-context"
+
 declare global {
   interface Window {
     gtag?: (
@@ -17,107 +24,132 @@ function getDevice(): "mobile" | "desktop" {
   return window.innerWidth < 768 ? "mobile" : "desktop"
 }
 
+function baseParams(extra?: Record<string, unknown>) {
+  return {
+    lead_id: getOrCreateLeadId(),
+    funnel_entry_path: getFunnelEntryPath(),
+    device: getDevice(),
+    ...getAcquisitionParams(),
+    ...extra,
+  }
+}
+
+function sendEvent(eventName: string, params?: Record<string, unknown>) {
+  if (typeof window === "undefined" || !window.gtag) {
+    return
+  }
+
+  window.gtag("event", eventName, baseParams(params))
+}
+
 export function trackCtaClickDownload(params: {
   page: string
   placement: string
 }) {
-  if (typeof window !== "undefined" && window.gtag) {
-    // Evento novo, detalhado por página/posição/dispositivo
-    window.gtag("event", "cta_click_download", {
-      page: params.page,
-      placement: params.placement,
-      device: getDevice(),
-    })
+  sendEvent("download_click", {
+    page: params.page,
+    placement: params.placement,
+  })
 
-    // Evento legado usado nas campanhas de Ads (já configurado)
-    window.gtag("event", "conversion_event_signup", {
-      event_category: "CTA Download",
-      event_label: `${params.page}_${params.placement}`,
-      page: params.page,
-      placement: params.placement,
-      device: getDevice(),
-    })
-  }
+  // Compatibilidade com eventos já existentes em dashboards/campanhas
+  sendEvent("cta_click_download", {
+    page: params.page,
+    placement: params.placement,
+  })
+
+  sendEvent("conversion_event_signup", {
+    event_category: "CTA Download",
+    event_label: `${params.page}_${params.placement}`,
+    page: params.page,
+    placement: params.placement,
+  })
 }
 
 export function trackCtaClickDownloadApp(params: {
   page: string
   placement: string
 }) {
+  setFunnelEntryPath("app_first")
   trackCtaClickDownload(params)
 
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "cta_click_download_app", {
-      page: params.page,
-      placement: params.placement,
-      device: getDevice(),
-    })
-  }
+  sendEvent("cta_click_download_app", {
+    page: params.page,
+    placement: params.placement,
+  })
 }
 
 export function trackCtaClickDownloadAppRedirect(params: {
   page: string
   placement: string
 }) {
+  setFunnelEntryPath("app_first")
   trackCtaClickDownload(params)
 
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "cta_click_download_app_redirect", {
-      page: params.page,
-      placement: params.placement,
-      device: getDevice(),
-    })
-  }
+  sendEvent("cta_click_download_app_redirect", {
+    page: params.page,
+    placement: params.placement,
+  })
 }
 
 export function trackCtaClickDownloadWhatsApp(params: {
   page: string
   placement: string
 }) {
+  setFunnelEntryPath("whatsapp_first")
+
+  sendEvent("whatsapp_click", {
+    page: params.page,
+    placement: params.placement,
+  })
+
   trackCtaClickDownload(params)
 
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "cta_click_download_whatsapp", {
-      page: params.page,
-      placement: params.placement,
-      device: getDevice(),
-    })
-  }
+  sendEvent("cta_click_download_whatsapp", {
+    page: params.page,
+    placement: params.placement,
+  })
 }
 
 export function trackCtaClickHowItWorks(params: {
   page: string
   placement: string
 }) {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "cta_click_how_it_works", {
-      page: params.page,
-      placement: params.placement,
-      device: getDevice(),
-    })
-  }
+  sendEvent("cta_click_how_it_works", {
+    page: params.page,
+    placement: params.placement,
+  })
+}
+
+export function trackWhatsAppConversationStarted(source: string) {
+  setFunnelEntryPath("whatsapp_first")
+  sendEvent("whatsapp_conversation_started", { source })
+}
+
+export function trackWebFormSubmitted(status: "success" | "error") {
+  setFunnelEntryPath("whatsapp_first")
+  sendEvent("web_form_submitted", { status })
+}
+
+export function trackAccountConnected(connectionMethod: "web_link" | "app") {
+  sendEvent("account_connected", { connection_method: connectionMethod })
+}
+
+export function trackFirstInsightReceived(source: "whatsapp" | "app") {
+  sendEvent("first_insight_received", { source })
 }
 
 export function trackNavClick(label: string) {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "nav_click", { label })
-  }
+  sendEvent("nav_click", { label })
 }
 
 export function trackFaqExpandQuestion(questionId: string) {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "faq_expand_question", { question_id: questionId })
-  }
+  sendEvent("faq_expand_question", { question_id: questionId })
 }
 
 export function trackLearnOpenArticle(slug: string) {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "learn_open_article", { slug })
-  }
+  sendEvent("learn_open_article", { slug })
 }
 
 export function trackLearnClickDownload(slug: string) {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "learn_click_download", { slug })
-  }
+  sendEvent("learn_click_download", { slug })
 }

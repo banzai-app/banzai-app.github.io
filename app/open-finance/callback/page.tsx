@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { buildWhatsAppLink } from "@/lib/whatsapp-link"
+import { trackAccountConnected, trackCtaClickDownloadApp } from "@/lib/analytics"
+import { getOrCreateLeadId } from "@/lib/funnel-context"
 
 const getApiBaseUrl = () => {
   const fromEnv = process.env.NEXT_PUBLIC_API_BASE_URL
@@ -54,6 +56,7 @@ export default function OpenFinanceCallbackPage() {
     if (sessionStorage.getItem(completionKey) === "true") {
       setStatus("success")
       setMessage("Conexão concluída! Já estamos analisando seus dados.")
+      trackAccountConnected("web_link")
       return
     }
 
@@ -81,6 +84,7 @@ export default function OpenFinanceCallbackPage() {
             state,
             attemptId,
             linkId,
+            leadId: getOrCreateLeadId(),
           }),
         })
 
@@ -89,6 +93,7 @@ export default function OpenFinanceCallbackPage() {
             setStatus("success")
             setMessage("Conexão concluída! Já estamos analisando seus dados.")
             sessionStorage.setItem(completionKey, "true")
+            trackAccountConnected("web_link")
             return
           }
           const payload = await response.json().catch(() => ({}))
@@ -99,6 +104,7 @@ export default function OpenFinanceCallbackPage() {
             setStatus("success")
             setMessage("Conexão concluída! Já estamos analisando seus dados.")
             sessionStorage.setItem(completionKey, "true")
+            trackAccountConnected("web_link")
             return
           }
           throw new Error(payload.error ?? "Erro ao confirmar conexão")
@@ -107,6 +113,7 @@ export default function OpenFinanceCallbackPage() {
         sessionStorage.setItem(completionKey, "true")
         setStatus("success")
         setMessage("Conexão concluída! Já estamos analisando seus dados.")
+        trackAccountConnected("web_link")
       } catch (error: any) {
         if (sessionStorage.getItem(completionKey) === "true") {
           setStatus("success")
@@ -141,7 +148,17 @@ export default function OpenFinanceCallbackPage() {
                   Voltar ao WhatsApp
                 </Button>
               )}
-              <Button variant="outline" className="rounded-full px-6" onClick={() => window.location.href = "https://banzai.money"}>
+              <Button
+                variant="outline"
+                className="rounded-full px-6"
+                onClick={() => {
+                  trackCtaClickDownloadApp({
+                    page: "open_finance_callback",
+                    placement: "success_download_after_whatsapp",
+                  })
+                  window.location.href = "https://banzai.money"
+                }}
+              >
                 Baixar o app
               </Button>
             </div>

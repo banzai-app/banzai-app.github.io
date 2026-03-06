@@ -1,8 +1,13 @@
 "use client"
 
-import { Suspense, useMemo, useState } from "react"
+import { Suspense, useEffect, useMemo, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
+import {
+  trackWebFormSubmitted,
+  trackWhatsAppConversationStarted,
+} from "@/lib/analytics"
+import { getOrCreateLeadId } from "@/lib/funnel-context"
 
 const getApiBaseUrl = () => {
   const fromEnv = process.env.NEXT_PUBLIC_API_BASE_URL
@@ -32,6 +37,12 @@ function WhatsAppOnboardingContent() {
   const [birthDate, setBirthDate] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (sessionToken) {
+      trackWhatsAppConversationStarted("landing_whatsapp")
+    }
+  }, [sessionToken])
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -63,6 +74,7 @@ function WhatsAppOnboardingContent() {
         },
         body: JSON.stringify({
           sessionToken,
+          leadId: getOrCreateLeadId(),
           name,
           nickname,
           document: {
@@ -75,10 +87,12 @@ function WhatsAppOnboardingContent() {
       })
 
       if (!response.ok) {
+        trackWebFormSubmitted("error")
         const payload = await response.json().catch(() => ({}))
         throw new Error(payload.error ?? "Erro ao iniciar conexão")
       }
 
+      trackWebFormSubmitted("success")
       const data = await response.json()
 
       localStorage.setItem("banzai_whatsapp_api_base", whatsappBaseUrl)
