@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { trackCtaClickDownloadWhatsApp } from "@/lib/analytics"
 
 export function FinalCTASection() {
-  const whatsappLink = "https://wa.me/message/STNGOA3DNQWJI1"
+  const whatsappLink = "https://wa.me/message/SU5NST24OSAWP1"
   const showWhatsApp = true
 
   return (

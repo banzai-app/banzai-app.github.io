@@ -10,7 +10,7 @@ import { useAppLink } from "@/hooks/use-app-link"
 
 export function HeroSection() {
   const appLink = useAppLink()
-  const whatsappLink = "https://wa.me/message/STNGOA3DNQWJI1"
+  const whatsappLink = "https://wa.me/message/SU5NST24OSAWP1"
   const showWhatsApp = true
   const [imageLoaded, setImageLoaded] = useState(false)
 
