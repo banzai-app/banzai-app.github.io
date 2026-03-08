@@ -28,6 +28,10 @@ const roboto = Roboto({
 })
 
 const SITE_URL = "https://banzai.money"
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ""
+const ENABLE_ANALYTICS =
+  process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === "true" &&
+  GA_MEASUREMENT_ID.length > 0
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -76,17 +80,24 @@ export default function RootLayout({
       <head>
         <SchemaOrg />
         <link rel="manifest" href="/site.webmanifest" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0ETNCSVGG"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-Z0ETNCSVGG');
-            `,
-          }}
-        />
+        {ENABLE_ANALYTICS && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_MEASUREMENT_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
       </head>
       <body className={`${spaceGrotesk.variable} ${inriaSerif.variable} ${roboto.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <HeaderNav />
