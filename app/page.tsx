@@ -1,11 +1,9 @@
 import { HeroSection } from "@/components/hero-section"
-import { StepsSection } from "@/components/steps-section"
-import { AppPreviewSection } from "@/components/app-preview-section"
-import { BenefitCards } from "@/components/benefit-cards"
-import { HighlightsSection } from "@/components/highlights-section"
+import { FeaturesSection } from "@/components/features-section"
 import { SecuritySection } from "@/components/security-section"
-import { MetricsStrip } from "@/components/metrics-strip"
-import { FaqPreview } from "@/components/faq-preview"
+import { AiSkillsSection } from "@/components/ai-skills-section"
+import { SocialProofSection } from "@/components/social-proof-section"
+import { HomeFaqSection } from "@/components/home-faq-section"
 import { FinalCTASection } from "@/components/final-cta-section"
 import type { Metadata } from "next"
 
@@ -24,13 +22,11 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-visible">
       <HeroSection />
-      <StepsSection />
-      <AppPreviewSection />
-      <BenefitCards />
-      <HighlightsSection />
+      <FeaturesSection />
       <SecuritySection />
-      <MetricsStrip />
-      <FaqPreview />
+      <AiSkillsSection />
+      <SocialProofSection />
+      <HomeFaqSection />
       <FinalCTASection />
     </div>
   )

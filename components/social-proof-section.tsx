@@ -81,7 +81,7 @@ export function SocialProofSection() {
         </div>
 
         <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 text-center mt-12 sm:mt-14">
-          Por que nossos clientes nos amam
+          Usuários reais, problemas reais
         </h3>
 
         <div className="mt-6 max-w-4xl mx-auto">

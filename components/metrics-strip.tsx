@@ -1,6 +1,6 @@
 const METRICS = [
   { value: "100k", label: "transações analisadas" },
-  { value: "1k+", label: "usuários em beta" },
+  { value: "1k+", label: "usuários ativos" },
   { value: "95%", label: "de classificação automática em cartão e conta corrente" },
 ] as const
 
