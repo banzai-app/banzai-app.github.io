@@ -8,10 +8,12 @@ import {
   trackCtaClickDownloadWhatsApp,
 } from "@/lib/analytics"
 
+const ENABLE_WHATSAPP_CTA = false
+
 export function FinalCTASection() {
   const appLink = useAppLink()
   const whatsappLink = useWhatsAppLink()
-  const showWhatsApp = Boolean(whatsappLink)
+  const showWhatsApp = ENABLE_WHATSAPP_CTA && Boolean(whatsappLink)
 
   return (
     <section

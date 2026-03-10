@@ -9,10 +9,12 @@ import {
 import { useAppLink } from "@/hooks/use-app-link"
 import { useWhatsAppLink } from "@/hooks/use-whatsapp-link"
 
+const ENABLE_WHATSAPP_CTA = false
+
 export function HeroSection() {
   const appLink = useAppLink()
   const whatsappLink = useWhatsAppLink()
-  const showWhatsApp = Boolean(whatsappLink)
+  const showWhatsApp = ENABLE_WHATSAPP_CTA && Boolean(whatsappLink)
   const [imageLoaded, setImageLoaded] = useState(false)
 
   useEffect(() => {
