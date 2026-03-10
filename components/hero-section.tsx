@@ -23,7 +23,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <img
-        src="/hero-image.png"
+        src="/hero-image.jpg"
         alt=""
         aria-hidden
         loading="eager"
