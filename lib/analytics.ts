@@ -24,6 +24,32 @@ function getDevice(): "mobile" | "desktop" {
   return window.innerWidth < 768 ? "mobile" : "desktop"
 }
 
+function getAppPlatform(): "ios" | "android" | "desktop" {
+  if (typeof window === "undefined") return "desktop"
+  const userAgent = window.navigator.userAgent
+  if (/android/i.test(userAgent)) return "android"
+  if (/iPhone|iPad|iPod/i.test(userAgent)) return "ios"
+  return "desktop"
+}
+
+function trackPlatformDownloadEvent(params: { page: string; placement: string }) {
+  const platform = getAppPlatform()
+
+  if (platform === "ios") {
+    sendEvent("cta_click_download_app_ios", {
+      page: params.page,
+      placement: params.placement,
+    })
+  }
+
+  if (platform === "android") {
+    sendEvent("cta_click_download_app_android", {
+      page: params.page,
+      placement: params.placement,
+    })
+  }
+}
+
 function baseParams(extra?: Record<string, unknown>) {
   return {
     lead_id: getOrCreateLeadId(),
@@ -76,6 +102,8 @@ export function trackCtaClickDownloadApp(params: {
     page: params.page,
     placement: params.placement,
   })
+
+  trackPlatformDownloadEvent(params)
 }
 
 export function trackCtaClickDownloadAppRedirect(params: {
@@ -89,6 +117,8 @@ export function trackCtaClickDownloadAppRedirect(params: {
     page: params.page,
     placement: params.placement,
   })
+
+  trackPlatformDownloadEvent(params)
 }
 
 export function trackCtaClickDownloadWhatsApp(params: {
